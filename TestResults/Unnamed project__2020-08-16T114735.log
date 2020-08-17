@@ -1,0 +1,479 @@
+﻿2020-08-16T11:47:35.7683957+10:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2020-08-16T11:47:35.7685234+10:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.3.41 in Framework netcore31 in x64 mode execution started
+2020-08-16T11:47:35.7685256+10:00;VSTestExecutionThread;Info;TestAdapter Location: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2020-08-16T11:47:35.7702675+10:00;VSTestExecutionThread;Info;Current UserName: 'anjal', MachineName: 'DESKTOP-GE185K6'
+2020-08-16T11:47:35.7870641+10:00;VSTestExecutionThread;Info;SpecRun: running tests in A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-16T11:47:35.7872208+10:00;VSTestExecutionThread;Info;Output folder configured to "A:\InfoTrack\GoogleLoginScreen\TestResults" (default)
+2020-08-16T11:47:35.7872619+10:00;VSTestExecutionThread;Info;Profile: 
+2020-08-16T11:47:35.8191973+10:00;VSTestExecutionThread;Info;Log file path: A:\InfoTrack\GoogleLoginScreen\TestResults\Unnamed project__2020-08-16T114735.log
+2020-08-16T11:47:35.8226789+10:00;Thread#12;Info;Checking activation
+2020-08-16T11:47:35.8917720+10:00;Thread#12;Info;Activated.
+2020-08-16T11:47:35.8920212+10:00;Thread#12;Info;Activation check completed
+2020-08-16T11:47:35.8920760+10:00;Thread#12;Info;Starting test run
+2020-08-16T11:47:35.9638031+10:00;Thread#12;Info;Discovering target: Default
+2020-08-16T11:47:35.9639306+10:00;Thread#12;Info;Discovering tests from assembly: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-16T11:47:36.0160311+10:00;Thread#12;Info;Discovered tests from assembly: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-16T11:47:36.0172512+10:00:Test Suite Dump
+2020-08-16T11:47:36.0187038+10:00:#0: Unnamed project/ - 
+2020-08-16T11:47:36.0187184+10:00:#1: Default - 
+2020-08-16T11:47:36.0187201+10:00:#2: GoogleLoginScreen - 
+2020-08-16T11:47:36.0187214+10:00:#3: LoginScreen - 
+2020-08-16T11:47:36.0196654+10:00:#4: Check google account login url - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Check+google+account+login+url
+2020-08-16T11:47:36.0196989+10:00:#5: Check Forgot email button on login screen - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Check+Forgot+email+button+on+login+screen
+2020-08-16T11:47:36.0197071+10:00:#6: Check Learn more link on login screen - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Check+Learn+more+link+on+login+screen
+2020-08-16T11:47:36.0197128+10:00:#7: Check Create account link on login screen - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Check+Create+account+link+on+login+screen
+2020-08-16T11:47:36.0197186+10:00:#8: Enter email or phone and click on next button - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Enter+email+or+phone+and+click+on+next+button
+2020-08-16T11:47:36.0197238+10:00:#9: Invalid email or phone - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Invalid+email+or+phone
+2020-08-16T11:47:36.0197289+10:00:#10: Null value in email or phone - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Null+value+in+email+or+phone
+2020-08-16T11:47:36.0197344+10:00:#11: Non-Existing google account - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Non-Existing+google+account
+2020-08-16T11:47:36.0197595+10:00:End: Test Suite Dump
+2020-08-16T11:47:36.0340577+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:47:36.0355253+10:00:Thread#:Scheduler: testitem #4 from normal test queue 
+2020-08-16T11:47:36.0355754+10:00:Thread#0:Scheduler: considering testitem #4 for thread 0
+2020-08-16T11:47:36.0382657+10:00:Thread#0:TestItem#4:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:47:36.0382738+10:00:Thread#0:TestItem#4:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:47:36.0382755+10:00:Thread#0:TestItem#4:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:47:36.0382776+10:00:Thread#0:Scheduler: using testitem #4 for thread 0
+2020-08-16T11:47:36.0387947+10:00:Thread#0:Scheduler: Test #4 is scheduled for thread
+2020-08-16T11:47:36.0395468+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:47:36.0415159+10:00:Thread #0: creating new test thread executor for GoogleLoginScreen, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2020-08-16T11:47:36.0436033+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-08-16T11:47:36.0437381+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-08-16T11:47:36.0616076+10:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2020-08-16T11:47:36.0629761+10:00:starting Out Of Process Executor
+2020-08-16T11:47:36.0942552+10:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:47:36.0967722+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2020-08-16T11:47:36.0967842+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2020-08-16T11:47:36.0978964+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.0982138+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-08-16T11:47:36.0982978+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.exe'
+2020-08-16T11:47:36.0983127+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.1045942+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.1046095+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-16T11:47:36.1046875+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-16T11:47:36.1047109+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.1048206+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.1048256+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-16T11:47:36.1048704+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-16T11:47:36.1048879+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.1049757+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.1049789+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-16T11:47:36.1050574+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-16T11:47:36.1050769+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.1068422+10:00:Starting callback TCP Rpc server
+2020-08-16T11:47:36.1242127+10:00:Asynchronously starting background TCP Rpc Server on port 32768
+2020-08-16T11:47:36.1246005+10:00:Started callback TCP Rpc server on port 32768
+2020-08-16T11:47:36.1246064+10:00:Starting logger TCP Rpc server
+2020-08-16T11:47:36.1258234+10:00:Asynchronously starting background TCP Rpc Server on port 32769
+2020-08-16T11:47:36.1258383+10:00:Started logger TCP Rpc server on port 32769
+2020-08-16T11:47:36.2434808+10:00:Executing test executor at 'dotnet' 'exec "A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\TechTalk.SpecRun.Framework.Executor.anycpu.netcoreapp3_1.dll" --remoteRunnerPid 9060 --uniqueId "2020-08-16T114735" --outputFolder "A:\InfoTrack\GoogleLoginScreen\TestResults" --callbackPort 32768 --loggerPort 32769' in 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.2497831+10:00:Executor with PID 14664 has been started successfully.
+2020-08-16T11:47:36.2527413+10:00:Out of Process Executor 14664 started
+2020-08-16T11:47:36.2527548+10:00:Waiting for endpoint
+2020-08-16T11:47:36.6531776+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:47:36.6532317+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' from .deps.json file
+2020-08-16T11:47:36.6532345+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' from .deps.json
+2020-08-16T11:47:36.6532411+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.6532425+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-08-16T11:47:36.6532597+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-08-16T11:47:36.6532706+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.6539017+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.6539101+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-16T11:47:36.6539455+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-16T11:47:36.6539644+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.6540340+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.6540386+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-16T11:47:36.6540613+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-16T11:47:36.6540771+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.6541409+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.6541441+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-16T11:47:36.6541707+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-16T11:47:36.6541873+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.6546619+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:47:36.6551728+10:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:47:36.6551793+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2020-08-16T11:47:36.6551812+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2020-08-16T11:47:36.6551833+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.6551843+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-08-16T11:47:36.6551952+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.exe'
+2020-08-16T11:47:36.6552049+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:47:36.6555436+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.6555496+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-16T11:47:36.6555788+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-16T11:47:36.6555966+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:47:36.6556625+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.6556665+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-16T11:47:36.6556920+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-16T11:47:36.6557081+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:47:36.6557696+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.6557733+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-16T11:47:36.6557935+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-16T11:47:36.6558086+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:47:36.8324223+10:00:Remote executor port received: 32770
+2020-08-16T11:47:36.8328396+10:00:Creating executor TCP client on port 32770
+2020-08-16T11:47:36.8332811+10:00:Created executor TCP client on port 32770
+2020-08-16T11:47:36.8332892+10:00:Connecting to remote executor TCP server
+2020-08-16T11:47:36.8343678+10:00:Connected remote executor TCP server
+2020-08-16T11:47:36.8346119+10:00:trying to connect to Out of Process Executor the 1 attempt
+2020-08-16T11:47:36.8346238+10:00:Connection to Out of Process Executor established in the 1 attempt
+2020-08-16T11:47:36.9762266+10:00:2020-08-16T11:47:36.9750175+10:00:OutOfProcessTestAssemblyExecutor: initialized for A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll on test thread #0
+2020-08-16T11:47:36.9816389+10:00:Endpoint 14664 started
+2020-08-16T11:47:37.0090494+10:00:2020-08-16T11:47:37.0085107+10:00:OutOfProcessTestAssemblyExecutor: running tests...
+2020-08-16T11:47:37.1193637+10:00:2020-08-16T11:47:37.1187002+10:00:Assembly resolving TechTalk.SpecFlow, Version=3.3.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-08-16T11:47:37.1224648+10:00:2020-08-16T11:47:37.1221118+10:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2020-08-16T11:47:37.1251822+10:00:2020-08-16T11:47:37.1247946+10:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\anjal\.nuget\packages\specflow\3.3.30\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2020-08-16T11:47:37.2109493+10:00:2020-08-16T11:47:37.2103932+10:00:Thread#0:T:-> Loading plugin A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\SpecRun.Runtime.SpecFlowPlugin.dll
+2020-08-16T11:47:37.2302522+10:00:2020-08-16T11:47:37.2297988+10:00:Assembly resolving TechTalk.SpecFlow, Version=3.3.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-08-16T11:47:37.2333950+10:00:2020-08-16T11:47:37.2331037+10:00:Thread#0:T:-> Using default config
+2020-08-16T11:47:37.2405199+10:00:2020-08-16T11:47:37.2398451+10:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2020-08-16T11:47:37.2411821+10:00:2020-08-16T11:47:37.2408683+10:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2020-08-16T11:47:37.2420329+10:00:2020-08-16T11:47:37.2416775+10:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\anjal\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2020-08-16T11:47:37.2435418+10:00:2020-08-16T11:47:37.2431826+10:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2020-08-16T11:47:37.2440011+10:00:2020-08-16T11:47:37.2437903+10:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2020-08-16T11:47:37.2446024+10:00:2020-08-16T11:47:37.2443677+10:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\anjal\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2020-08-16T11:47:37.2527908+10:00:2020-08-16T11:47:37.2523308+10:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:47:37.2532052+10:00:2020-08-16T11:47:37.2530080+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2020-08-16T11:47:37.2538506+10:00:2020-08-16T11:47:37.2535608+10:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\anjal\.nuget\packages\microsoft.testplatform.objectmodel\16.7.0\lib\netstandard2.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2020-08-16T11:47:37.2802167+10:00:2020-08-16T11:47:37.2796079+10:00:Assembly resolving Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27
+2020-08-16T11:47:37.2810147+10:00:2020-08-16T11:47:37.2806563+10:00:[AssemblyCache] Trying to resolve 'Utf8Json' from .deps.json file
+2020-08-16T11:47:37.2819088+10:00:2020-08-16T11:47:37.2815340+10:00:[AssemblyCache] Resolved 'Utf8Json' to 'C:\Users\anjal\.nuget\packages\utf8json\1.3.7\lib\netstandard2.0\Utf8Json.dll'
+2020-08-16T11:47:37.4307271+10:00:Thread#0: Test #4/0 is started on thread #0
+2020-08-16T11:47:37.4558059+10:00:2020-08-16T11:47:37.4549643+10:00:Assembly resolving WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null
+2020-08-16T11:47:37.4565590+10:00:2020-08-16T11:47:37.4561620+10:00:[AssemblyCache] Trying to resolve 'WebDriver' from .deps.json file
+2020-08-16T11:47:37.4573718+10:00:2020-08-16T11:47:37.4570035+10:00:[AssemblyCache] Resolved 'WebDriver' to 'C:\Users\anjal\.nuget\packages\selenium.webdriver\3.141.0\lib\netstandard2.0\WebDriver.dll'
+2020-08-16T11:47:44.7744309+10:00:2020-08-16T11:47:44.7729360+10:00:Thread#0:B:Given User opens browser
+2020-08-16T11:47:44.7860046+10:00:2020-08-16T11:47:44.7844199+10:00:Thread#0:T:Open browser
+2020-08-16T11:47:44.7948723+10:00:2020-08-16T11:47:44.7938599+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowser() (0.0s)
+2020-08-16T11:47:44.7970367+10:00:2020-08-16T11:47:44.7962330+10:00:Thread#0:B:When User has entered google account url in the browser
+2020-08-16T11:47:44.7989872+10:00:2020-08-16T11:47:44.7984298+10:00:Thread#0:T:Enter url
+2020-08-16T11:47:44.7997872+10:00:2020-08-16T11:47:44.7994833+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserHasEnteredGoogleAccountUrlInTheBrowser() (0.0s)
+2020-08-16T11:47:44.8008181+10:00:2020-08-16T11:47:44.8004174+10:00:Thread#0:B:Then Login page should be displayed
+2020-08-16T11:47:44.8019289+10:00:2020-08-16T11:47:44.8017242+10:00:Thread#0:T:Login page displayed
+2020-08-16T11:47:44.8033618+10:00:2020-08-16T11:47:44.8031010+10:00:Assembly resolving ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa
+2020-08-16T11:47:44.8038824+10:00:2020-08-16T11:47:44.8036259+10:00:[AssemblyCache] Trying to resolve 'ExcelDataReader' from .deps.json file
+2020-08-16T11:47:44.8049714+10:00:2020-08-16T11:47:44.8044174+10:00:[AssemblyCache] Resolved 'ExcelDataReader' to 'C:\Users\anjal\.nuget\packages\exceldatareader\3.6.0\lib\netstandard2.0\ExcelDataReader.dll'
+2020-08-16T11:47:44.8111405+10:00:2020-08-16T11:47:44.8107276+10:00:Assembly resolving ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa
+2020-08-16T11:47:44.8115129+10:00:2020-08-16T11:47:44.8113148+10:00:[AssemblyCache] Trying to resolve 'ExcelDataReader.DataSet' from .deps.json file
+2020-08-16T11:47:44.8120100+10:00:2020-08-16T11:47:44.8117671+10:00:[AssemblyCache] Resolved 'ExcelDataReader.DataSet' to 'C:\Users\anjal\.nuget\packages\exceldatareader.dataset\3.6.0\lib\netstandard2.0\ExcelDataReader.DataSet.dll'
+2020-08-16T11:47:44.8996539+10:00:2020-08-16T11:47:44.8991756+10:00:Assembly resolving nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb
+2020-08-16T11:47:44.9001269+10:00:2020-08-16T11:47:44.8999063+10:00:[AssemblyCache] Trying to resolve 'nunit.framework' from .deps.json file
+2020-08-16T11:47:44.9006021+10:00:2020-08-16T11:47:44.9004469+10:00:[AssemblyCache] Resolved 'nunit.framework' to 'C:\Users\anjal\.nuget\packages\nunit\3.12.0\lib\netstandard2.0\nunit.framework.dll'
+2020-08-16T11:47:44.9666814+10:00:2020-08-16T11:47:44.9662117+10:00:Thread#0:T:Sign In Header is correct
+2020-08-16T11:47:44.9672144+10:00:2020-08-16T11:47:44.9670042+10:00:Thread#0:T:done: LoginScreenSteps.ThenLoginPageShouldBeDisplayed() (0.2s)
+2020-08-16T11:47:44.9759319+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:47:44.9759767+10:00:Thread#:Scheduler: testitem #5 from normal test queue 
+2020-08-16T11:47:44.9759809+10:00:Thread#0:Scheduler: considering testitem #5 for thread 0
+2020-08-16T11:47:44.9760479+10:00:Thread#0:TestItem#5:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:47:44.9760529+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:47:44.9760544+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:47:44.9760559+10:00:Thread#0:Scheduler: using testitem #5 for thread 0
+2020-08-16T11:47:44.9760889+10:00:Thread#0:Scheduler: Test #5 is scheduled for thread
+2020-08-16T11:47:44.9761248+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:47:45.1053794+10:00:Thread#0: Test #4/0 is finished on thread #0 as Succeeded within 7.6736739 seconds
+2020-08-16T11:47:45.1084393+10:00:Thread#0: Test #5/0 is started on thread #0
+2020-08-16T11:47:52.2129729+10:00:2020-08-16T11:47:52.2116476+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:47:52.2165450+10:00:2020-08-16T11:47:52.2153596+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:47:52.2181291+10:00:2020-08-16T11:47:52.2175205+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:47:52.2195232+10:00:2020-08-16T11:47:52.2188883+10:00:Thread#0:B:When User click on forget email button
+2020-08-16T11:47:52.2782732+10:00:2020-08-16T11:47:52.2773030+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.1s)
+2020-08-16T11:47:52.2793062+10:00:2020-08-16T11:47:52.2789879+10:00:Thread#0:B:Then Forgot email screen should be displayed
+2020-08-16T11:47:52.3140804+10:00:2020-08-16T11:47:52.3135998+10:00:Thread#0:T:Sign in
+2020-08-16T11:47:52.4839757+10:00:2020-08-16T11:47:52.4834607+10:00:Thread#0:T:error:   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:47:52.4846417+10:00:2020-08-16T11:47:52.4842856+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:47:52.4852574+10:00:2020-08-16T11:47:52.4848936+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:47:52.4858105+10:00:2020-08-16T11:47:52.4854871+10:00:Thread#0:T:  -----------^
+2020-08-16T11:47:52.4883708+10:00:Thread#0:TestItem#5:Scheduler: reschedule tests for testitem #5
+2020-08-16T11:47:52.4898424+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:47:52.4899575+10:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #5
+2020-08-16T11:47:52.4899714+10:00:Thread#0:Scheduler: considering testitem #5 for thread 0
+2020-08-16T11:47:52.4901111+10:00:Thread#0:TestItem#5:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:47:52.4901172+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:47:52.4901188+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:47:52.4901206+10:00:Thread#0:Scheduler: using testitem #5 for thread 0
+2020-08-16T11:47:52.4901778+10:00:Thread#0:Scheduler: Test #5 is scheduled for thread
+2020-08-16T11:47:52.4902254+10:00:Thread#0:Scheduler: with testItemExecutionIndex 1
+2020-08-16T11:47:52.5793045+10:00:Thread#0: Test #5/0 is finished on thread #0 as Failed within 7.4707584 seconds
+2020-08-16T11:47:52.5802903+10:00:Thread#0: Test #5/1 is started on thread #0
+2020-08-16T11:47:59.3273237+10:00:2020-08-16T11:47:59.3264221+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:47:59.3306649+10:00:2020-08-16T11:47:59.3294489+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:47:59.3325342+10:00:2020-08-16T11:47:59.3316694+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:47:59.3344249+10:00:2020-08-16T11:47:59.3335203+10:00:Thread#0:B:When User click on forget email button
+2020-08-16T11:47:59.3947582+10:00:2020-08-16T11:47:59.3935982+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.1s)
+2020-08-16T11:47:59.3963157+10:00:2020-08-16T11:47:59.3959230+10:00:Thread#0:B:Then Forgot email screen should be displayed
+2020-08-16T11:47:59.4412270+10:00:2020-08-16T11:47:59.4407427+10:00:Thread#0:T:Sign in
+2020-08-16T11:47:59.4663042+10:00:2020-08-16T11:47:59.4657908+10:00:Thread#0:T:error: Multiple failures or warnings in test:
+2020-08-16T11:47:59.4670468+10:00:2020-08-16T11:47:59.4667039+10:00:Thread#0:T:  1)   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:47:59.4676331+10:00:2020-08-16T11:47:59.4673136+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:47:59.4681464+10:00:2020-08-16T11:47:59.4678780+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:47:59.4687051+10:00:2020-08-16T11:47:59.4683781+10:00:Thread#0:T:  -----------^
+2020-08-16T11:47:59.4692604+10:00:2020-08-16T11:47:59.4689359+10:00:Thread#0:T:  2)   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:47:59.4698817+10:00:2020-08-16T11:47:59.4695354+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:47:59.4703706+10:00:2020-08-16T11:47:59.4701095+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:47:59.4708872+10:00:2020-08-16T11:47:59.4706030+10:00:Thread#0:T:  -----------^
+2020-08-16T11:47:59.4733512+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:47:59.4734099+10:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #5
+2020-08-16T11:47:59.4734142+10:00:Thread#0:Scheduler: considering testitem #5 for thread 0
+2020-08-16T11:47:59.4734823+10:00:Thread#0:TestItem#5:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:47:59.4734873+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:47:59.4734885+10:00:Thread#0:TestItem#5:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:47:59.4734899+10:00:Thread#0:Scheduler: using testitem #5 for thread 0
+2020-08-16T11:47:59.4735849+10:00:Thread#0:Scheduler: Test #5 is scheduled for thread
+2020-08-16T11:47:59.4736376+10:00:Thread#0:Scheduler: with testItemExecutionIndex 2
+2020-08-16T11:47:59.5517145+10:00:Thread#0: Test #5/1 is finished on thread #0 as Failed within 6.9713361 seconds
+2020-08-16T11:47:59.5526062+10:00:Thread#0: Test #5/2 is started on thread #0
+2020-08-16T11:48:06.2963274+10:00:2020-08-16T11:48:06.2952331+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:06.2992491+10:00:2020-08-16T11:48:06.2983074+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:06.3006777+10:00:2020-08-16T11:48:06.3001155+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:06.3018792+10:00:2020-08-16T11:48:06.3013002+10:00:Thread#0:B:When User click on forget email button
+2020-08-16T11:48:06.3734873+10:00:2020-08-16T11:48:06.3725992+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.1s)
+2020-08-16T11:48:06.3748617+10:00:2020-08-16T11:48:06.3742939+10:00:Thread#0:B:Then Forgot email screen should be displayed
+2020-08-16T11:48:06.4083179+10:00:2020-08-16T11:48:06.4075927+10:00:Thread#0:T:Sign in
+2020-08-16T11:48:06.4288183+10:00:2020-08-16T11:48:06.4280605+10:00:Thread#0:T:error: Multiple failures or warnings in test:
+2020-08-16T11:48:06.4295781+10:00:2020-08-16T11:48:06.4291131+10:00:Thread#0:T:  1)   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:48:06.4308343+10:00:2020-08-16T11:48:06.4303288+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:48:06.4316532+10:00:2020-08-16T11:48:06.4312521+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:48:06.4323910+10:00:2020-08-16T11:48:06.4319511+10:00:Thread#0:T:  -----------^
+2020-08-16T11:48:06.4332892+10:00:2020-08-16T11:48:06.4328707+10:00:Thread#0:T:  2)   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:48:06.4338293+10:00:2020-08-16T11:48:06.4336414+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:48:06.4344798+10:00:2020-08-16T11:48:06.4341647+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:48:06.4348467+10:00:2020-08-16T11:48:06.4346291+10:00:Thread#0:T:  -----------^
+2020-08-16T11:48:06.4352252+10:00:2020-08-16T11:48:06.4349776+10:00:Thread#0:T:  3)   Expected string length 15 but was 7. Strings differ at index 0.
+2020-08-16T11:48:06.4356535+10:00:2020-08-16T11:48:06.4353788+10:00:Thread#0:T:  Expected: "Find your email"
+2020-08-16T11:48:06.4360857+10:00:2020-08-16T11:48:06.4358598+10:00:Thread#0:T:  But was:  "Sign in"
+2020-08-16T11:48:06.4366336+10:00:2020-08-16T11:48:06.4363210+10:00:Thread#0:T:  -----------^
+2020-08-16T11:48:06.4389401+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:06.4390027+10:00:Thread#:Scheduler: testitem #6 from normal test queue 
+2020-08-16T11:48:06.4390158+10:00:Thread#0:Scheduler: considering testitem #6 for thread 0
+2020-08-16T11:48:06.4391073+10:00:Thread#0:TestItem#6:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:06.4391232+10:00:Thread#0:TestItem#6:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:06.4391336+10:00:Thread#0:TestItem#6:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:06.4391484+10:00:Thread#0:Scheduler: using testitem #6 for thread 0
+2020-08-16T11:48:06.4392273+10:00:Thread#0:Scheduler: Test #6 is scheduled for thread
+2020-08-16T11:48:06.4393094+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:48:06.5261144+10:00:Thread#0: Test #5/2 is finished on thread #0 as Failed within 6.97339 seconds
+2020-08-16T11:48:06.5269205+10:00:Thread#0: Test #6/0 is started on thread #0
+2020-08-16T11:48:13.2011219+10:00:2020-08-16T11:48:13.2001313+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:13.2030725+10:00:2020-08-16T11:48:13.2024346+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:13.2045163+10:00:2020-08-16T11:48:13.2038951+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:13.2059362+10:00:2020-08-16T11:48:13.2054264+10:00:Thread#0:B:When User click on Learn more link
+2020-08-16T11:48:16.7367489+10:00:2020-08-16T11:48:16.7362320+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnLearnMoreLink() (3.5s)
+2020-08-16T11:48:16.7378620+10:00:2020-08-16T11:48:16.7374869+10:00:Thread#0:B:Then Learn more page should be displayed
+2020-08-16T11:48:16.7764361+10:00:2020-08-16T11:48:16.7756920+10:00:Thread#0:T:Browse Chrome as a guest
+2020-08-16T11:48:17.1716072+10:00:2020-08-16T11:48:17.1711073+10:00:Thread#0:T:done: LoginScreenSteps.ThenLearnMorePageShouldBeDisplayed() (0.4s)
+2020-08-16T11:48:17.1732207+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:17.1732525+10:00:Thread#:Scheduler: testitem #7 from normal test queue 
+2020-08-16T11:48:17.1732584+10:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2020-08-16T11:48:17.1733047+10:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:17.1733087+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:17.1733103+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:17.1733137+10:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2020-08-16T11:48:17.1733491+10:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2020-08-16T11:48:17.1734014+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:48:17.2720329+10:00:Thread#0: Test #6/0 is finished on thread #0 as Succeeded within 10.7450056 seconds
+2020-08-16T11:48:17.2728565+10:00:Thread#0: Test #7/0 is started on thread #0
+2020-08-16T11:48:23.9471150+10:00:2020-08-16T11:48:23.9466901+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:23.9480747+10:00:2020-08-16T11:48:23.9477584+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:23.9495666+10:00:2020-08-16T11:48:23.9485092+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:23.9509604+10:00:2020-08-16T11:48:23.9503436+10:00:Thread#0:B:When User click on Create accoun link and selete given options
+2020-08-16T11:48:24.2330832+10:00:2020-08-16T11:48:24.2324632+10:00:Assembly resolving System.Net.Requests.resources, Version=4.1.2.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:48:24.2338764+10:00:2020-08-16T11:48:24.2335818+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' from .deps.json file
+2020-08-16T11:48:24.2342372+10:00:2020-08-16T11:48:24.2340864+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' from .deps.json
+2020-08-16T11:48:24.2357109+10:00:2020-08-16T11:48:24.2354793+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:48:24.2367908+10:00:2020-08-16T11:48:24.2365546+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Net.Requests.resources.dll'
+2020-08-16T11:48:24.2370955+10:00:2020-08-16T11:48:24.2369588+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Net.Requests.resources.exe'
+2020-08-16T11:48:24.2373659+10:00:2020-08-16T11:48:24.2372383+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:48:24.2443279+10:00:2020-08-16T11:48:24.2439350+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:48:24.2448055+10:00:2020-08-16T11:48:24.2445694+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Net.Requests.resources.dll'
+2020-08-16T11:48:24.2453714+10:00:2020-08-16T11:48:24.2451024+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Net.Requests.resources.exe'
+2020-08-16T11:48:24.2459507+10:00:2020-08-16T11:48:24.2456817+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:48:24.2465815+10:00:2020-08-16T11:48:24.2463335+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:48:24.2471424+10:00:2020-08-16T11:48:24.2468400+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Net.Requests.resources.dll'
+2020-08-16T11:48:24.2476910+10:00:2020-08-16T11:48:24.2474563+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Net.Requests.resources.exe'
+2020-08-16T11:48:24.2481505+10:00:2020-08-16T11:48:24.2479471+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:48:24.2488147+10:00:2020-08-16T11:48:24.2485936+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:48:24.2491345+10:00:2020-08-16T11:48:24.2489967+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Net.Requests.resources.dll'
+2020-08-16T11:48:24.2495244+10:00:2020-08-16T11:48:24.2493194+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Net.Requests.resources.exe'
+2020-08-16T11:48:24.2500160+10:00:2020-08-16T11:48:24.2497235+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:48:24.2511932+10:00:2020-08-16T11:48:24.2509819+10:00:Assembly resolving System.Net.Requests.resources, Version=4.1.2.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:48:24.2597108+10:00:2020-08-16T11:48:24.2592506+10:00:Thread#0:T:error: stale element reference: element is not attached to the page document
+2020-08-16T11:48:24.2604357+10:00:2020-08-16T11:48:24.2600654+10:00:Thread#0:T:  (Session info: chrome=84.0.4147.125)
+2020-08-16T11:48:24.2612828+10:00:2020-08-16T11:48:24.2609255+10:00:Thread#0:B:Then Create account page should be displayed
+2020-08-16T11:48:24.2627636+10:00:2020-08-16T11:48:24.2624588+10:00:Thread#0:T:skipped because of previous errors
+2020-08-16T11:48:24.2684579+10:00:Thread#0:TestItem#7:Scheduler: reschedule tests for testitem #7
+2020-08-16T11:48:24.2693225+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:24.2693800+10:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #7
+2020-08-16T11:48:24.2693874+10:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2020-08-16T11:48:24.2694655+10:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:24.2694712+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:24.2694749+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:24.2694797+10:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2020-08-16T11:48:24.2695350+10:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2020-08-16T11:48:24.2695893+10:00:Thread#0:Scheduler: with testItemExecutionIndex 1
+2020-08-16T11:48:24.3474638+10:00:Thread#0: Test #7/0 is finished on thread #0 as Failed within 7.0745032 seconds
+2020-08-16T11:48:24.3481336+10:00:Thread#0: Test #7/1 is started on thread #0
+2020-08-16T11:48:31.0440895+10:00:2020-08-16T11:48:31.0436473+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:31.0451883+10:00:2020-08-16T11:48:31.0448610+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:31.0457472+10:00:2020-08-16T11:48:31.0455475+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:31.0461802+10:00:2020-08-16T11:48:31.0459512+10:00:Thread#0:B:When User click on Create accoun link and selete given options
+2020-08-16T11:48:31.4390727+10:00:2020-08-16T11:48:31.4386598+10:00:Thread#0:T:error: stale element reference: element is not attached to the page document
+2020-08-16T11:48:31.4397090+10:00:2020-08-16T11:48:31.4393318+10:00:Thread#0:T:  (Session info: chrome=84.0.4147.125)
+2020-08-16T11:48:31.4402846+10:00:2020-08-16T11:48:31.4400850+10:00:Thread#0:B:Then Create account page should be displayed
+2020-08-16T11:48:31.4409275+10:00:2020-08-16T11:48:31.4407388+10:00:Thread#0:T:skipped because of previous errors
+2020-08-16T11:48:31.4432530+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:31.4432820+10:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #7
+2020-08-16T11:48:31.4432884+10:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2020-08-16T11:48:31.4433597+10:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:31.4433636+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:31.4433656+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:31.4433696+10:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2020-08-16T11:48:31.4434159+10:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2020-08-16T11:48:31.4434505+10:00:Thread#0:Scheduler: with testItemExecutionIndex 2
+2020-08-16T11:48:31.5213197+10:00:Thread#0: Test #7/1 is finished on thread #0 as Failed within 7.1730086 seconds
+2020-08-16T11:48:31.5224557+10:00:Thread#0: Test #7/2 is started on thread #0
+2020-08-16T11:48:38.1788809+10:00:2020-08-16T11:48:38.1785434+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:38.1798773+10:00:2020-08-16T11:48:38.1795954+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:38.1804746+10:00:2020-08-16T11:48:38.1802403+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:38.1810170+10:00:2020-08-16T11:48:38.1808075+10:00:Thread#0:B:When User click on Create accoun link and selete given options
+2020-08-16T11:48:38.5376659+10:00:2020-08-16T11:48:38.5374332+10:00:Thread#0:T:error: stale element reference: element is not attached to the page document
+2020-08-16T11:48:38.5378900+10:00:2020-08-16T11:48:38.5377943+10:00:Thread#0:T:  (Session info: chrome=84.0.4147.125)
+2020-08-16T11:48:38.5381961+10:00:2020-08-16T11:48:38.5380571+10:00:Thread#0:B:Then Create account page should be displayed
+2020-08-16T11:48:38.5386699+10:00:2020-08-16T11:48:38.5385147+10:00:Thread#0:T:skipped because of previous errors
+2020-08-16T11:48:38.5409616+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:38.5409893+10:00:Thread#:Scheduler: testitem #8 from normal test queue 
+2020-08-16T11:48:38.5409981+10:00:Thread#0:Scheduler: considering testitem #8 for thread 0
+2020-08-16T11:48:38.5410552+10:00:Thread#0:TestItem#8:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:38.5410595+10:00:Thread#0:TestItem#8:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:38.5410609+10:00:Thread#0:TestItem#8:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:38.5410646+10:00:Thread#0:Scheduler: using testitem #8 for thread 0
+2020-08-16T11:48:38.5410868+10:00:Thread#0:Scheduler: Test #8 is scheduled for thread
+2020-08-16T11:48:38.5411176+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:48:38.6273777+10:00:Thread#0: Test #7/2 is finished on thread #0 as Failed within 7.1048071 seconds
+2020-08-16T11:48:38.6279750+10:00:Thread#0: Test #8/0 is started on thread #0
+2020-08-16T11:48:45.3069771+10:00:2020-08-16T11:48:45.3062519+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:45.3081942+10:00:2020-08-16T11:48:45.3077665+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:45.3090829+10:00:2020-08-16T11:48:45.3086653+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:45.3101296+10:00:2020-08-16T11:48:45.3097051+10:00:Thread#0:B:When User enter valid email or phone
+2020-08-16T11:48:45.4691393+10:00:2020-08-16T11:48:45.4689508+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserEnterValidEmailOrPhone() (0.2s)
+2020-08-16T11:48:45.4697715+10:00:2020-08-16T11:48:45.4696199+10:00:Thread#0:B:And User click on the next button
+2020-08-16T11:48:47.8019430+10:00:2020-08-16T11:48:47.8013627+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.3s)
+2020-08-16T11:48:47.8031948+10:00:2020-08-16T11:48:47.8027073+10:00:Thread#0:B:Then Page to enter password should be displayed
+2020-08-16T11:48:47.8518766+10:00:2020-08-16T11:48:47.8514215+10:00:Thread#0:T:Couldn't sign you in
+2020-08-16T11:48:48.2728390+10:00:2020-08-16T11:48:48.2724839+10:00:Thread#0:T:done: LoginScreenSteps.ThenPageToEnterPasswordShouldBeDisplayed() (0.5s)
+2020-08-16T11:48:48.2742403+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:48.2742682+10:00:Thread#:Scheduler: testitem #9 from normal test queue 
+2020-08-16T11:48:48.2742732+10:00:Thread#0:Scheduler: considering testitem #9 for thread 0
+2020-08-16T11:48:48.2743112+10:00:Thread#0:TestItem#9:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:48.2743154+10:00:Thread#0:TestItem#9:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:48.2743170+10:00:Thread#0:TestItem#9:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:48.2743195+10:00:Thread#0:Scheduler: using testitem #9 for thread 0
+2020-08-16T11:48:48.2743450+10:00:Thread#0:Scheduler: Test #9 is scheduled for thread
+2020-08-16T11:48:48.2743786+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:48:48.3635736+10:00:Thread#0: Test #8/0 is finished on thread #0 as Succeeded within 9.7355287 seconds
+2020-08-16T11:48:48.3642732+10:00:Thread#0: Test #9/0 is started on thread #0
+2020-08-16T11:48:54.8750451+10:00:2020-08-16T11:48:54.8746721+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:48:54.8759532+10:00:2020-08-16T11:48:54.8757133+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:48:54.8763104+10:00:2020-08-16T11:48:54.8761593+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:48:54.8766012+10:00:2020-08-16T11:48:54.8764447+10:00:Thread#0:B:When User enter invalid email or phone
+2020-08-16T11:48:54.9446821+10:00:2020-08-16T11:48:54.9444977+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserEnterInvalidEmailOrPhone() (0.1s)
+2020-08-16T11:48:54.9449161+10:00:2020-08-16T11:48:54.9448348+10:00:Thread#0:B:And User click on the next button
+2020-08-16T11:48:57.2725879+10:00:2020-08-16T11:48:57.2720164+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.3s)
+2020-08-16T11:48:57.2739359+10:00:2020-08-16T11:48:57.2734528+10:00:Thread#0:B:Then Enter valid email or phone message is displayed
+2020-08-16T11:48:57.3256765+10:00:2020-08-16T11:48:57.3252844+10:00:Thread#0:T:Enter a valid email or phone number
+2020-08-16T11:48:57.7312194+10:00:2020-08-16T11:48:57.7309471+10:00:Thread#0:T:done: LoginScreenSteps.ThenEnterValidEmailOrPhoneMessageIsDisplayed() (0.5s)
+2020-08-16T11:48:57.7326207+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:48:57.7326544+10:00:Thread#:Scheduler: testitem #10 from normal test queue 
+2020-08-16T11:48:57.7326585+10:00:Thread#0:Scheduler: considering testitem #10 for thread 0
+2020-08-16T11:48:57.7326956+10:00:Thread#0:TestItem#10:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:48:57.7326988+10:00:Thread#0:TestItem#10:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:48:57.7327006+10:00:Thread#0:TestItem#10:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:48:57.7327020+10:00:Thread#0:Scheduler: using testitem #10 for thread 0
+2020-08-16T11:48:57.7327274+10:00:Thread#0:Scheduler: Test #10 is scheduled for thread
+2020-08-16T11:48:57.7327582+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:48:57.8221622+10:00:Thread#0: Test #9/0 is finished on thread #0 as Succeeded within 9.4578218 seconds
+2020-08-16T11:48:57.8227901+10:00:Thread#0: Test #10/0 is started on thread #0
+2020-08-16T11:49:04.4815138+10:00:2020-08-16T11:49:04.4810499+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:49:04.4825442+10:00:2020-08-16T11:49:04.4821990+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:49:04.4832218+10:00:2020-08-16T11:49:04.4829220+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:49:04.4838879+10:00:2020-08-16T11:49:04.4835809+10:00:Thread#0:B:When User enter null value email or phone
+2020-08-16T11:49:04.6631054+10:00:2020-08-16T11:49:04.6626385+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserEnterNullValueEmailOrPhone() (0.2s)
+2020-08-16T11:49:04.6636719+10:00:2020-08-16T11:49:04.6634469+10:00:Thread#0:B:And User click on the next button
+2020-08-16T11:49:06.9894445+10:00:2020-08-16T11:49:06.9888939+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.3s)
+2020-08-16T11:49:06.9905782+10:00:2020-08-16T11:49:06.9901014+10:00:Thread#0:B:Then Enter email or phone message is displayed
+2020-08-16T11:49:07.0470347+10:00:2020-08-16T11:49:07.0466061+10:00:Thread#0:T:Enter an email or phone number
+2020-08-16T11:49:07.4656798+10:00:2020-08-16T11:49:07.4654001+10:00:Thread#0:T:done: LoginScreenSteps.ThenEnterEmailOrPhoneMessageIsDisplayed() (0.5s)
+2020-08-16T11:49:07.4672545+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-16T11:49:07.4672778+10:00:Thread#:Scheduler: testitem #11 from normal test queue 
+2020-08-16T11:49:07.4672813+10:00:Thread#0:Scheduler: considering testitem #11 for thread 0
+2020-08-16T11:49:07.4673414+10:00:Thread#0:TestItem#11:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-16T11:49:07.4673454+10:00:Thread#0:TestItem#11:runsOnOneOtherThreadSpecific:False
+2020-08-16T11:49:07.4673467+10:00:Thread#0:TestItem#11:runsOnOneOtherThreadUnspecific:False
+2020-08-16T11:49:07.4673482+10:00:Thread#0:Scheduler: using testitem #11 for thread 0
+2020-08-16T11:49:07.4673795+10:00:Thread#0:Scheduler: Test #11 is scheduled for thread
+2020-08-16T11:49:07.4674158+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-16T11:49:07.5501844+10:00:Thread#0: Test #10/0 is finished on thread #0 as Succeeded within 9.7273275 seconds
+2020-08-16T11:49:07.5507499+10:00:Thread#0: Test #11/0 is started on thread #0
+2020-08-16T11:49:14.1640586+10:00:2020-08-16T11:49:14.1638234+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-16T11:49:14.1644657+10:00:2020-08-16T11:49:14.1643718+10:00:Thread#0:T:Open browser and enter url
+2020-08-16T11:49:14.1647146+10:00:2020-08-16T11:49:14.1646169+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-16T11:49:14.1649424+10:00:2020-08-16T11:49:14.1648614+10:00:Thread#0:B:When User enter Non-Existing email or phone
+2020-08-16T11:49:14.2455711+10:00:2020-08-16T11:49:14.2453366+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserEnterNon_ExistingEmailOrPhone() (0.1s)
+2020-08-16T11:49:14.2458974+10:00:2020-08-16T11:49:14.2457523+10:00:Thread#0:B:And User click on the next button
+2020-08-16T11:49:16.5849904+10:00:2020-08-16T11:49:16.5844546+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.3s)
+2020-08-16T11:49:16.5859063+10:00:2020-08-16T11:49:16.5854932+10:00:Thread#0:B:Then Couldn't find your google account message is displayed
+2020-08-16T11:49:16.6160803+10:00:2020-08-16T11:49:16.6156607+10:00:Thread#0:T:error: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='o6cuMc']"}
+2020-08-16T11:49:16.6166624+10:00:2020-08-16T11:49:16.6164206+10:00:Thread#0:T:  (Session info: chrome=84.0.4147.125)
+2020-08-16T11:49:16.6183982+10:00:Cancelling because configured number of failures reached
+2020-08-16T11:49:16.7127213+10:00:Thread#0: Test #11/0 is finished on thread #0 as Failed within 9.1618927 seconds
+2020-08-16T11:49:16.7219583+10:00:2020-08-16T11:49:16.7216137+10:00:Got Deinitialize Signal
+2020-08-16T11:49:16.7258047+10:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2020-08-16T11:49:16.7272135+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-08-16T11:49:16.7283812+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-08-16T11:49:16.7300972+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:49:16.7301261+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' from .deps.json file
+2020-08-16T11:49:16.7301330+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' from .deps.json
+2020-08-16T11:49:16.7301432+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:49:16.7301453+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-08-16T11:49:16.7301822+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-08-16T11:49:16.7302051+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-16T11:49:16.7311468+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:49:16.7311554+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-16T11:49:16.7312169+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-16T11:49:16.7312468+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-16T11:49:16.7313475+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:49:16.7313521+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-16T11:49:16.7313849+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-16T11:49:16.7314083+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-16T11:49:16.7314940+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:49:16.7314980+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-16T11:49:16.7315408+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-16T11:49:16.7315663+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-16T11:49:16.7321853+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-16T11:49:16.7407210+10:00:Thread#-1:Scheduler: get next test for thread -1
+2020-08-16T11:49:16.7407813+10:00:Thread#:Scheduler: at the end of normal test queue
+2020-08-16T11:49:16.7407847+10:00:Thread#-1:Scheduler: enumerator for thread is at end
+2020-08-16T11:49:16.7466415+10:00;Thread#12;Info;test run finished
+2020-08-16T11:49:16.7468965+10:00;Thread#12;Info;publishing test results
+2020-08-16T11:49:16.7470220+10:00;Thread#12;Info;Not publishing results.
+2020-08-16T11:49:16.7470783+10:00;Thread#12;Info;test results published
+2020-08-16T11:49:16.7471118+10:00;Thread#12;Info;generating reports
+2020-08-16T11:49:16.8329242+10:00;Thread#12;Info;Starting external report generation process
+2020-08-16T11:49:18.6189287+10:00;Thread#12;Info;Successfully generated reports.
+2020-08-16T11:49:18.6205243+10:00;Thread#12;Info;Successfully generated reports
+2020-08-16T11:49:18.6258911+10:00:Total: 8 (test executions: 12)
+2020-08-16T11:49:18.6277311+10:00:Succeeded: 5
+2020-08-16T11:49:18.6279970+10:00:Ignored: 0
+2020-08-16T11:49:18.6281884+10:00:Pending: 0
+2020-08-16T11:49:18.6281939+10:00:Skipped: 0
+2020-08-16T11:49:18.6283675+10:00:Failed: 3
+2020-08-16T11:49:18.6339290+10:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2020-08-16T11:49:18.6339816+10:00;VSTestExecutionThread;Info;adding Test Execution Report 'A:\InfoTrack\GoogleLoginScreen\TestResults\Unnamed project__2020-08-16T114735.html'
+========== End of log file ==========

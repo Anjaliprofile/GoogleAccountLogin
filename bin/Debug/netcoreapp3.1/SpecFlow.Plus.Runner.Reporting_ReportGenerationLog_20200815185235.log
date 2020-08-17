@@ -1,0 +1,10 @@
+﻿2020-08-15T18:52:35.1247981+10:00;Thread#1;Info;Reading test run result from Json file "C:\Users\anjal\AppData\Local\Temp\tmp654D.tmp".
+2020-08-15T18:52:35.1297796+10:00;Thread#1;Info;Successfully read test run result from Json file "C:\Users\anjal\AppData\Local\Temp\tmp654D.tmp"
+2020-08-15T18:52:35.1297796+10:00;Thread#1;Info;Deserializing test run result
+2020-08-15T18:52:35.4606825+10:00;Thread#1;Info;Successfully deserialized test run result
+2020-08-15T18:52:35.4606825+10:00;Thread#1;Info;Loading test run result
+2020-08-15T18:52:35.4765783+10:00;Thread#1;Info;Successfully loaded test run result
+2020-08-15T18:52:35.4836047+10:00;Thread#1;Info;creating 1 report(s)
+2020-08-15T18:52:35.4846206+10:00;Thread#1;Info;generate Report ReportTemplate.cshtml
+2020-08-15T18:52:36.0496634+10:00;Thread#1;Info;Finished generating reports.
+========== End of log file ==========

@@ -1,0 +1,212 @@
+﻿2020-08-17T10:25:36.0748647+10:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2020-08-17T10:25:36.0754340+10:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.3.41 in Framework netcore31 in x64 mode execution started
+2020-08-17T10:25:36.0754364+10:00;VSTestExecutionThread;Info;TestAdapter Location: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2020-08-17T10:25:36.0775595+10:00;VSTestExecutionThread;Info;Current UserName: 'anjal', MachineName: 'DESKTOP-GE185K6'
+2020-08-17T10:25:36.0945856+10:00;VSTestExecutionThread;Info;SpecRun: running tests in A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-17T10:25:36.0947545+10:00;VSTestExecutionThread;Info;Output folder configured to "A:\InfoTrack\GoogleLoginScreen\TestResults" (default)
+2020-08-17T10:25:36.0947916+10:00;VSTestExecutionThread;Info;Profile: 
+2020-08-17T10:25:36.1229039+10:00;VSTestExecutionThread;Info;Log file path: A:\InfoTrack\GoogleLoginScreen\TestResults\Unnamed project__2020-08-17T102536.log
+2020-08-17T10:25:36.1260392+10:00;Thread#12;Info;Checking activation
+2020-08-17T10:25:36.1800751+10:00;Thread#12;Info;Activated.
+2020-08-17T10:25:36.1802558+10:00;Thread#12;Info;Activation check completed
+2020-08-17T10:25:36.1803048+10:00;Thread#12;Info;Starting test run
+2020-08-17T10:25:36.2474535+10:00;Thread#12;Info;Discovering target: Default
+2020-08-17T10:25:36.2475913+10:00;Thread#12;Info;Discovering tests from assembly: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-17T10:25:36.3008186+10:00;Thread#12;Info;Discovered tests from assembly: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll
+2020-08-17T10:25:36.3016187+10:00:Test Suite Dump
+2020-08-17T10:25:36.3026890+10:00:#0: Unnamed project/ - 
+2020-08-17T10:25:36.3027003+10:00:#1: Default - 
+2020-08-17T10:25:36.3027016+10:00:#2: GoogleLoginScreen - 
+2020-08-17T10:25:36.3027026+10:00:#3: LoginScreen - 
+2020-08-17T10:25:36.3033996+10:00:#7: Check Create account link on login screen - TestAssembly:GoogleLoginScreen/Feature:LoginScreen/Scenario:Check+Create+account+link+on+login+screen
+2020-08-17T10:25:36.3034200+10:00:End: Test Suite Dump
+2020-08-17T10:25:36.3150427+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-17T10:25:36.3168188+10:00:Thread#:Scheduler: testitem #7 from normal test queue 
+2020-08-17T10:25:36.3168597+10:00:Thread#0:Scheduler: considering testitem #7 for thread 0
+2020-08-17T10:25:36.3193355+10:00:Thread#0:TestItem#7:testItemMatchesCurrentTestThread:UnSpecific
+2020-08-17T10:25:36.3193431+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadSpecific:False
+2020-08-17T10:25:36.3193455+10:00:Thread#0:TestItem#7:runsOnOneOtherThreadUnspecific:False
+2020-08-17T10:25:36.3193879+10:00:Thread#0:Scheduler: using testitem #7 for thread 0
+2020-08-17T10:25:36.3198551+10:00:Thread#0:Scheduler: Test #7 is scheduled for thread
+2020-08-17T10:25:36.3207661+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-08-17T10:25:36.3226183+10:00:Thread #0: creating new test thread executor for GoogleLoginScreen, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2020-08-17T10:25:36.3251800+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-08-17T10:25:36.3253168+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-08-17T10:25:36.3267295+10:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2020-08-17T10:25:36.3277356+10:00:starting Out Of Process Executor
+2020-08-17T10:25:36.3286181+10:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:36.3302812+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2020-08-17T10:25:36.3302919+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2020-08-17T10:25:36.3310875+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.3313166+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-08-17T10:25:36.3313592+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.exe'
+2020-08-17T10:25:36.3313719+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.3357754+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.3357882+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-17T10:25:36.3358385+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-17T10:25:36.3358554+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.3359301+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.3359334+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-17T10:25:36.3359571+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-17T10:25:36.3359719+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.3360389+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.3360420+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Validation.dll'
+2020-08-17T10:25:36.3360691+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Validation.exe'
+2020-08-17T10:25:36.3360846+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.3374793+10:00:Starting callback TCP Rpc server
+2020-08-17T10:25:36.3474377+10:00:Asynchronously starting background TCP Rpc Server on port 32768
+2020-08-17T10:25:36.3475161+10:00:Started callback TCP Rpc server on port 32768
+2020-08-17T10:25:36.3475176+10:00:Starting logger TCP Rpc server
+2020-08-17T10:25:36.3488072+10:00:Asynchronously starting background TCP Rpc Server on port 32771
+2020-08-17T10:25:36.3488196+10:00:Started logger TCP Rpc server on port 32771
+2020-08-17T10:25:36.3999937+10:00:Executing test executor at 'dotnet' 'exec "A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\TechTalk.SpecRun.Framework.Executor.anycpu.netcoreapp3_1.dll" --remoteRunnerPid 6892 --uniqueId "2020-08-17T102536" --outputFolder "A:\InfoTrack\GoogleLoginScreen\TestResults" --callbackPort 32768 --loggerPort 32771' in 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.4052212+10:00:Executor with PID 7092 has been started successfully.
+2020-08-17T10:25:36.4075245+10:00:Out of Process Executor 7092 started
+2020-08-17T10:25:36.4075401+10:00:Waiting for endpoint
+2020-08-17T10:25:36.6172513+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:36.6172678+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' from .deps.json file
+2020-08-17T10:25:36.6172699+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' from .deps.json
+2020-08-17T10:25:36.6172718+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.6172728+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-08-17T10:25:36.6172828+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-08-17T10:25:36.6172926+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.6176246+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.6176314+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-17T10:25:36.6176608+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-17T10:25:36.6176764+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.6177322+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.6177354+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-17T10:25:36.6177534+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-17T10:25:36.6177664+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.6178257+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.6178286+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\StreamJsonRpc.resources.dll'
+2020-08-17T10:25:36.6178486+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\StreamJsonRpc.resources.exe'
+2020-08-17T10:25:36.6178612+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.6182154+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:36.6185724+10:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:36.6185783+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2020-08-17T10:25:36.6185798+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2020-08-17T10:25:36.6185816+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.6185858+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-08-17T10:25:36.6185949+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.exe'
+2020-08-17T10:25:36.6186027+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:36.6188106+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.6188152+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-17T10:25:36.6188393+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-17T10:25:36.6188528+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:36.6189037+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.6189067+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-17T10:25:36.6189250+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-17T10:25:36.6189380+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:36.6189933+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.6189964+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Threading.dll'
+2020-08-17T10:25:36.6190167+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\Microsoft.VisualStudio.Threading.exe'
+2020-08-17T10:25:36.6190297+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:36.7695234+10:00:Remote executor port received: 32772
+2020-08-17T10:25:36.7697631+10:00:Creating executor TCP client on port 32772
+2020-08-17T10:25:36.7700063+10:00:Created executor TCP client on port 32772
+2020-08-17T10:25:36.7700107+10:00:Connecting to remote executor TCP server
+2020-08-17T10:25:36.7705735+10:00:Connected remote executor TCP server
+2020-08-17T10:25:36.7706524+10:00:trying to connect to Out of Process Executor the 1 attempt
+2020-08-17T10:25:36.7706589+10:00:Connection to Out of Process Executor established in the 1 attempt
+2020-08-17T10:25:36.8700635+10:00:2020-08-17T10:25:36.8690156+10:00:OutOfProcessTestAssemblyExecutor: initialized for A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll on test thread #0
+2020-08-17T10:25:36.8732800+10:00:Endpoint 7092 started
+2020-08-17T10:25:36.8874184+10:00:2020-08-17T10:25:36.8869269+10:00:OutOfProcessTestAssemblyExecutor: running tests...
+2020-08-17T10:25:36.9841489+10:00:2020-08-17T10:25:36.9836410+10:00:Assembly resolving TechTalk.SpecFlow, Version=3.3.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-08-17T10:25:36.9870562+10:00:2020-08-17T10:25:36.9866375+10:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2020-08-17T10:25:36.9892347+10:00:2020-08-17T10:25:36.9888653+10:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\anjal\.nuget\packages\specflow\3.3.30\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2020-08-17T10:25:37.0612526+10:00:2020-08-17T10:25:37.0607355+10:00:Thread#0:T:-> Loading plugin A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\SpecRun.Runtime.SpecFlowPlugin.dll
+2020-08-17T10:25:37.0625650+10:00:2020-08-17T10:25:37.0622670+10:00:Assembly resolving TechTalk.SpecFlow, Version=3.3.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-08-17T10:25:37.0652759+10:00:2020-08-17T10:25:37.0649568+10:00:Thread#0:T:-> Using default config
+2020-08-17T10:25:37.0713772+10:00:2020-08-17T10:25:37.0709965+10:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2020-08-17T10:25:37.0720009+10:00:2020-08-17T10:25:37.0717048+10:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2020-08-17T10:25:37.0727305+10:00:2020-08-17T10:25:37.0724569+10:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\anjal\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2020-08-17T10:25:37.0741255+10:00:2020-08-17T10:25:37.0738216+10:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2020-08-17T10:25:37.0746676+10:00:2020-08-17T10:25:37.0744080+10:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2020-08-17T10:25:37.0753771+10:00:2020-08-17T10:25:37.0750670+10:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\anjal\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2020-08-17T10:25:37.0823077+10:00:2020-08-17T10:25:37.0818697+10:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:37.0830265+10:00:2020-08-17T10:25:37.0827276+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2020-08-17T10:25:37.0838008+10:00:2020-08-17T10:25:37.0835784+10:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\anjal\.nuget\packages\microsoft.testplatform.objectmodel\16.7.0\lib\netstandard2.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2020-08-17T10:25:37.1059248+10:00:2020-08-17T10:25:37.1054804+10:00:Assembly resolving Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27
+2020-08-17T10:25:37.1067299+10:00:2020-08-17T10:25:37.1064232+10:00:[AssemblyCache] Trying to resolve 'Utf8Json' from .deps.json file
+2020-08-17T10:25:37.1075397+10:00:2020-08-17T10:25:37.1072339+10:00:[AssemblyCache] Resolved 'Utf8Json' to 'C:\Users\anjal\.nuget\packages\utf8json\1.3.7\lib\netstandard2.0\Utf8Json.dll'
+2020-08-17T10:25:37.2308394+10:00:Thread#0: Test #7/0 is started on thread #0
+2020-08-17T10:25:37.2469293+10:00:2020-08-17T10:25:37.2460923+10:00:Assembly resolving WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null
+2020-08-17T10:25:37.2475481+10:00:2020-08-17T10:25:37.2472413+10:00:[AssemblyCache] Trying to resolve 'WebDriver' from .deps.json file
+2020-08-17T10:25:37.2482647+10:00:2020-08-17T10:25:37.2480419+10:00:[AssemblyCache] Resolved 'WebDriver' to 'C:\Users\anjal\.nuget\packages\selenium.webdriver\3.141.0\lib\netstandard2.0\WebDriver.dll'
+2020-08-17T10:25:43.9974943+10:00:2020-08-17T10:25:43.9962840+10:00:Thread#0:B:Given User opens browser and enter url
+2020-08-17T10:25:44.0044422+10:00:2020-08-17T10:25:44.0035125+10:00:Thread#0:T:Open browser and enter url
+2020-08-17T10:25:44.0102898+10:00:2020-08-17T10:25:44.0093192+10:00:Thread#0:T:done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)
+2020-08-17T10:25:44.0123525+10:00:2020-08-17T10:25:44.0115773+10:00:Thread#0:B:When User click on Create accoun link and selete given options
+2020-08-17T10:25:44.0156608+10:00:2020-08-17T10:25:44.0148098+10:00:Assembly resolving ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa
+2020-08-17T10:25:44.0169120+10:00:2020-08-17T10:25:44.0162183+10:00:[AssemblyCache] Trying to resolve 'ExcelDataReader' from .deps.json file
+2020-08-17T10:25:44.0181959+10:00:2020-08-17T10:25:44.0176470+10:00:[AssemblyCache] Resolved 'ExcelDataReader' to 'C:\Users\anjal\.nuget\packages\exceldatareader\3.6.0\lib\netstandard2.0\ExcelDataReader.dll'
+2020-08-17T10:25:44.0205351+10:00:2020-08-17T10:25:44.0201735+10:00:Assembly resolving ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa
+2020-08-17T10:25:44.0211508+10:00:2020-08-17T10:25:44.0208457+10:00:[AssemblyCache] Trying to resolve 'ExcelDataReader.DataSet' from .deps.json file
+2020-08-17T10:25:44.0218999+10:00:2020-08-17T10:25:44.0215812+10:00:[AssemblyCache] Resolved 'ExcelDataReader.DataSet' to 'C:\Users\anjal\.nuget\packages\exceldatareader.dataset\3.6.0\lib\netstandard2.0\ExcelDataReader.DataSet.dll'
+2020-08-17T10:25:46.2077190+10:00:2020-08-17T10:25:46.2067923+10:00:Thread#0:T:Create account for myself
+2020-08-17T10:25:49.2397445+10:00:2020-08-17T10:25:49.2371336+10:00:Thread#0:T:done: LoginScreenSteps.WhenUserClickOnCreateAccounLinkAndSeleteGivenOptions() (5.2s)
+2020-08-17T10:25:49.2425244+10:00:2020-08-17T10:25:49.2420388+10:00:Thread#0:B:Then Create account page should be displayed
+2020-08-17T10:25:49.2499003+10:00:2020-08-17T10:25:49.2492620+10:00:Assembly resolving nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb
+2020-08-17T10:25:49.2508547+10:00:2020-08-17T10:25:49.2503952+10:00:[AssemblyCache] Trying to resolve 'nunit.framework' from .deps.json file
+2020-08-17T10:25:49.2521210+10:00:2020-08-17T10:25:49.2516203+10:00:[AssemblyCache] Resolved 'nunit.framework' to 'C:\Users\anjal\.nuget\packages\nunit\3.12.0\lib\netstandard2.0\nunit.framework.dll'
+2020-08-17T10:25:49.3006926+10:00:2020-08-17T10:25:49.3000895+10:00:Thread#0:T:Create your Google Account
+2020-08-17T10:25:49.7305676+10:00:2020-08-17T10:25:49.7294509+10:00:Thread#0:T:done: LoginScreenSteps.ThenCreateAccountPageShouldBeDisplayed() (0.5s)
+2020-08-17T10:25:49.7445189+10:00:Thread#0:Scheduler: get next test for thread 0
+2020-08-17T10:25:49.7445909+10:00:Thread#:Scheduler: at the end of normal test queue
+2020-08-17T10:25:49.7445925+10:00:Thread#0:Scheduler: enumerator for thread is at end
+2020-08-17T10:25:49.7445945+10:00:Thread#0:Scheduler: No more tests for thread
+2020-08-17T10:25:49.8711258+10:00:Thread#0: Test #7/0 is finished on thread #0 as Succeeded within 12.6396644 seconds
+2020-08-17T10:25:49.8767212+10:00:2020-08-17T10:25:49.8765066+10:00:Got Deinitialize Signal
+2020-08-17T10:25:49.8791333+10:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2020-08-17T10:25:49.8799090+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-08-17T10:25:49.8807509+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-08-17T10:25:49.8815871+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:49.8816018+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' from .deps.json file
+2020-08-17T10:25:49.8816052+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' from .deps.json
+2020-08-17T10:25:49.8816091+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:49.8816107+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-08-17T10:25:49.8816242+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-08-17T10:25:49.8816335+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1'
+2020-08-17T10:25:49.8821075+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:49.8821147+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-17T10:25:49.8821458+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-17T10:25:49.8821606+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.3'
+2020-08-17T10:25:49.8822200+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:49.8822238+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-17T10:25:49.8822433+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-17T10:25:49.8822566+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.3'
+2020-08-17T10:25:49.8823188+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:49.8823216+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Diagnostics.Process.resources.dll'
+2020-08-17T10:25:49.8823433+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3\System.Diagnostics.Process.resources.exe'
+2020-08-17T10:25:49.8823598+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.3'
+2020-08-17T10:25:49.8825963+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2020-08-17T10:25:49.8882280+10:00:Thread#-1:Scheduler: get next test for thread -1
+2020-08-17T10:25:49.8882518+10:00:Thread#:Scheduler: at the end of normal test queue
+2020-08-17T10:25:49.8882536+10:00:Thread#-1:Scheduler: enumerator for thread is at end
+2020-08-17T10:25:49.8892180+10:00;Thread#12;Info;test run finished
+2020-08-17T10:25:49.8893589+10:00;Thread#12;Info;publishing test results
+2020-08-17T10:25:49.8894486+10:00;Thread#12;Info;Not publishing results.
+2020-08-17T10:25:49.8894942+10:00;Thread#12;Info;test results published
+2020-08-17T10:25:49.8895186+10:00;Thread#12;Info;generating reports
+2020-08-17T10:25:49.9538988+10:00;Thread#12;Info;Starting external report generation process
+2020-08-17T10:25:51.0341592+10:00;Thread#12;Info;Successfully generated reports.
+2020-08-17T10:25:51.0358189+10:00;Thread#12;Info;Successfully generated reports
+2020-08-17T10:25:51.0399691+10:00:Total: 1
+2020-08-17T10:25:51.0410214+10:00:Succeeded: 1
+2020-08-17T10:25:51.0411727+10:00:Ignored: 0
+2020-08-17T10:25:51.0412782+10:00:Pending: 0
+2020-08-17T10:25:51.0412824+10:00:Skipped: 0
+2020-08-17T10:25:51.0413739+10:00:Failed: 0
+2020-08-17T10:25:51.0452137+10:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2020-08-17T10:25:51.0452728+10:00;VSTestExecutionThread;Info;adding Test Execution Report 'A:\InfoTrack\GoogleLoginScreen\TestResults\Unnamed project__2020-08-17T102536.html'
+========== End of log file ==========

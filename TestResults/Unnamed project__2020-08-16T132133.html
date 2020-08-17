@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Unnamed project Test Execution Report</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+            /**
+            * jQuery.fn.sortElements
+            * --------------
+            * #author James Padolsey (http://james.padolsey.com)
+            * #version 0.11
+            * #updated 18-MAR-2010
+            * #url https://raw.github.com/jamespadolsey/jQuery-Plugins/master/sortElements/jquery.sortElements.js
+            * --------------
+            * #param Function comparator:
+            *   Exactly the same behaviour as [1,2,3].sort(comparator)
+            *   
+            * #param Function getSortable
+            *   A function that should return the element that is
+            *   to be sorted. The comparator will run on the
+            *   current collection, but you may want the actual
+            *   resulting sort to occur on a parent or another
+            *   associated element.
+            *   
+            *   E.g. $('td').sortElements(comparator, function(){
+            *      return this.parentNode; 
+            *   })
+            *   
+            *   The <td>'s parent (<tr>) will be sorted instead
+            *   of the <td> itself.
+            */
+            jQuery.fn.sortElements = (function () {
+
+                var sort = [].sort;
+
+                return function (comparator, getSortable) {
+
+                    getSortable = getSortable || function () { return this; };
+
+                    var placements = this.map(function () {
+
+                        var sortElement = getSortable.call(this),
+                parentNode = sortElement.parentNode,
+
+                        // Since the element itself will change position, we have
+                        // to have some way of storing it's original position in
+                        // the DOM. The easiest way is to have a 'flag' node:
+                nextSibling = parentNode.insertBefore(
+                    document.createTextNode(''),
+                    sortElement.nextSibling
+                );
+
+                        return function () {
+
+                            if (parentNode === this) {
+                                throw new Error(
+                        "You can't sort elements if any one is a descendant of another."
+                    );
+                            }
+
+                            // Insert before flag:
+                            parentNode.insertBefore(this, nextSibling);
+                            // Remove flag:
+                            parentNode.removeChild(nextSibling);
+
+                        };
+
+                    });
+
+                    return sort.call(this, comparator).each(function (i) {
+                        placements[i].call(getSortable.call(this));
+                    });
+
+                };
+
+            })();
+        </script>
+        <script type="text/javascript">
+            jQuery.fn.setBarSizes = (function () {
+                return function (metricName, maxBarSize, min) {
+                    var max = Math.max.apply(Math, $.makeArray($(this).map(function () { return Number($(this).attr('data-sr-' + metricName)); })));
+                    var scale = 1.0;
+                    while (max > 0.0 && max <= 10.0) {
+                        scale = scale * 10.0;
+                        max = max * 10.0;
+                    }
+                    max = (Math.ceil(max / 2) * 2) / scale;
+
+                    this.each(function () {
+                        var barAnchor = $(this).find('a');
+                        var actual = $(this).attr('data-sr-' + metricName);
+                        var newHeight = Math.max(Math.round(maxBarSize * (actual - min) / (max - min)), 2);
+                        barAnchor.css({ height: newHeight });
+                    });
+
+                    var unit = "";
+                    if (metricName.substr(metricName.length - 4, 4) === "time")
+                        unit = "s";
+
+                    $('#testview .scale-min-label').each(function () {
+                        $(this).text(min.toString() + unit);
+                    });
+                    $('#testview .scale-max-label').each(function () {
+                        $(this).text(max.toString() + unit);
+                    });
+                    var mid = max / 2;
+                    $('#testview .scale-mid-label').each(function () {
+                        $(this).text(mid.toString() + unit);
+                    });
+                };
+            })();
+
+            function getComparer(metricName, isDesc) {
+                return function (a, b) {
+                    var aNumber = Number($(a).attr('data-sr-' + metricName));
+                    var bNumber = Number($(b).attr('data-sr-' + metricName));
+                    var result = aNumber > bNumber ? 1 : (aNumber < bNumber ? -1 : 0);
+                    if (isDesc)
+                        result = -1 * result;
+
+                    if (result == 0 && metricName != "order")
+                        result = getComparer("order", false)(a, b);
+
+                    return result;
+                };
+            }
+
+            var currentSort = "";
+            function doSort(allowToggleDesc) {
+                var newSort = $("input[name='barSortOrder']:checked").val();
+                if (allowToggleDesc && currentSort == newSort) {
+                    $('#barSortDesc').click();
+                    doSort(false);
+                    return;
+                }
+                currentSort = newSort;
+                $('#testview td.testview-item').sortElements(getComparer(newSort, $('#barSortDesc').is(':checked')));
+            }
+
+
+            function doSetHeights(allowSort) {
+                var selectedMetric = $("input[name='barHeight']:checked").val();
+                $('#testview td.testview-item').setBarSizes(selectedMetric, 60, 0.0);
+
+                if (allowSort && currentSort != selectedMetric) {
+                    var $radios = $("input[name='barSortOrder']");
+                    $radios.filter('[value=' + selectedMetric + ']').attr('checked', true);
+                    $("#barSortDesc").attr("checked", [true]);
+                    doSort(false);
+                }
+            }
+
+            $(document).ready(function () {
+                $("input[name='barSortOrder']").click(function () { doSort(true); return true; });
+                $("input[name='barSortDesc']").change(function () { doSort(false); });
+                $("input[name='barHeight']").change(function () { doSetHeights(true); });
+
+                doSort(false);
+                doSetHeights(false);
+
+                $("div.scrollable").css({ 'overflow': 'auto' });
+            });
+        </script>
+
+        <style type="text/css">
+            body 
+            {
+                color: #000000;
+                font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+                line-height: 130%;
+            }
+            h1 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 170%;
+                font-weight: bold;
+            }            
+            h2 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 130%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }            
+            h3 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 120%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }            
+            a.bar
+            {
+                text-decoration: none;
+                display: block;
+                line-height: 1px;
+            }
+            .description
+            {
+                font-style: italic;
+            }
+            .log 
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                display: block;
+                margin: 0px;
+            }
+            .errorMessage 
+            {
+                width: 600px;
+                color: Red;
+                font-weight: bold;
+            }
+            .stackTrace 
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                font-style: italic;
+                color: Red;
+                display: block;
+            }
+            table.testEvents
+            {
+                border: solid 1px #e8eef4;
+                border-collapse: collapse;
+            }
+            table.testEvents td
+            {
+                vertical-align: top;
+                padding: 5px;
+                border: solid 1px #e8eef4;
+            }
+            table.testEvents th
+            {
+                padding: 6px 5px;
+                text-align: left;
+                background-color: #e8eef4;
+                border: solid 1px #e8eef4;                
+            }
+            .comment
+            {
+                font-style: italic;
+                font-size: smaller;
+            }
+            .startupBar
+            {
+                background-color: #EEEEEE;
+                cursor: default;
+            }
+            
+            .colorSucceeded
+            {
+                background-color: #90ED7B;
+            }
+            .colorIgnored
+            {
+                background-color: #FFFF85;
+            }
+            .colorPending
+            {
+                background-color: #D47BED;
+            }
+            .colorNothingToRun
+            {
+                background-color: #CCCCFF;
+            }
+            .colorSkipped
+            {
+                background-color: #CCCCFF;
+            }
+            .colorInconclusive
+            {
+                background-color: #7BEDED;
+            }
+            .colorCleanupFailed
+            {
+                background-color: #FFCCCC;
+            }
+            .colorRandomlyFailed
+            {
+                background-color: #EDB07B;
+            }
+            .colorFailed
+            {
+                background-color: #ED5F5F;
+            }
+            .colorInitializationFailed
+            {
+                background-color: #FF0000;
+            }
+            .colorFrameworkError
+            {
+                background-color: #FF0000;
+            }
+            ul.subNodeLinks
+            {
+                padding-left: 20px;
+                margin: 0px;
+            }
+            ul.subNodeLinks li
+            {
+                list-style: none;
+            }
+            
+            /* views general */
+            div.scrollable
+            {
+                /*overflow: auto; - thsi has to be set from js, because of an IE9 bug */
+            }
+            div.viewbox
+            {
+                position: relative;
+                border: 3px solid #e8eef4;
+            }
+            div.viewbox table
+            {
+                border: 0px;
+            }
+                        
+            /* testview */
+            #testview
+            {
+                padding-top: 23px;
+            }
+            
+            table.testview-items td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 1px;
+            }
+            td.right-padding, td.left-padding
+            {
+                width: 25px;
+                min-width: 25px;
+            }
+            table.testview-items a.bar
+            {
+                width: 5px;
+            }
+            table.testview-items tr.testview-items-row
+            {
+                height: 60px;
+            }
+            
+            /* scale */
+            table.vertical-scale 
+            {
+                position: absolute;
+                top: 23px;
+                left: 0px;
+                width: 100%;
+                z-index: -100;
+            }
+            table.vertical-scale td, tr.horizontal-scale td
+            {
+                font-size: 60%;
+                line-height: normal;
+            }
+            table.vertical-scale tr.scale-max, table.vertical-scale tr.scale-mid 
+            {
+                height: 30px;
+            }
+            tr.horizontal-scale, table.vertical-scale tr.scale-min 
+            {
+                height: 12px;
+            }
+            
+            td.scale-max-label, td.scale-mid-label, td.scale-min-label
+            {
+                border-top: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: top;
+            }
+            td.scale-10-label
+            {
+                border-left: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: bottom;
+                padding-left: 1px;
+            }
+            tr.scale-mid td, tr.scale-min td, tr.scale-max td
+            {
+                border-top: solid 1px #E6E6E6;
+            }
+           
+            
+            /* bar-control */
+            #bar-control
+            {
+                font-size: 60%;
+                line-height: normal;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+            #bar-control label
+            {
+                font-weight: bold;
+                vertical-align: middle;
+            }
+            #bar-control .option
+            {
+                vertical-align: middle;
+                text-transform: lowercase;
+            }
+            #bar-control input[type="checkbox"]
+            {
+                padding: 0 2px 0 3px;
+            }
+            #bar-control input
+            {
+                vertical-align: top;
+                height: 12px;
+                margin: 0px;
+                padding: 0px;
+            }
+            #bar-control div
+            {
+                float: right;
+                margin: 3px 5px 3px 5px;
+            }
+
+            /* timeline view */
+            #timelineview
+            {
+                padding-top: 5px;
+            }
+            table.timelineview a
+            {
+                height: 20px;
+            }
+            table.timelineview td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 0px;
+                border: 0px;
+            }
+            tr.thread-items-row
+            {
+                height: 25px;
+            }
+            tr.thread-items-row td
+            {
+                vertical-align: bottom;
+            }
+            td.thread-label
+            {
+                padding: 0px 6px 0px 6px;
+                text-align: right;
+                line-height: 18px;
+                vertical-align: bottom;
+            }
+            th.thread-label
+            {
+                padding: 3px 6px 0px 6px;
+                line-height: 18px;
+                text-align: left;
+                vertical-align: bottom;
+            }
+        </style>
+	</head>
+	<body>
+        <h1>Unnamed project Test Execution Report</h1>
+        
+    <ul>
+        <li>Project: Unnamed project</li>
+        <li>Configuration: </li>
+        <li>Test Assemblies: A:\InfoTrack\GoogleLoginScreen\bin\Debug\netcoreapp3.1\GoogleLoginScreen.dll</li>
+        <li>Start Time: 16-08-2020 13:21:33</li>
+        <li>Duration: 00:01:31.8874558</li>
+        <li>Test Threads: 1</li>
+    </ul>
+
+
+        <h2>Result: 3 failed (1 randomly failed)</h2>
+        <table class="testEvents">
+                <tr>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+    </tr>
+
+                <td>
+            50%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 74px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 49px;" 
+           title="2 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+    <td>
+        <a class="bar colorRandomlyFailed" 
+           style="width: 24px;" 
+           title="1 randomly failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+    <td>
+        <a class="bar colorSkipped" 
+           style="width: 49px;" 
+           title="2 skipped" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>8 (test executions: 12)</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+
+        </table>
+        
+        <h2>Test Timeline Summary</h2>
+
+        <div id="timelineview" class="viewbox">
+            <div class="scrollable">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="thread-label" colspan="2">thread</th>
+                    </tr>
+                        <tr class="thread-items-row">
+                            <td class="thread-label" title="Machine: DESKTOP-GE185K6">#0</td>
+                            <td colspan="2">
+                                <table class="timelineview" cellpadding="0" cellspacing="0">
+                                    <tr>
+
+                                            <td>
+        <a
+            class="bar startupBar" 
+            style="width: 3px;" 
+                title="test thread startup" 
+        >&nbsp;</a>
+    </td>
+
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 4px;" 
+                title="Check google account login url (in LoginScreen)" 
+                href="#t-393869772.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 6px;" 
+                title="Check Forgot email button on login screen (in LoginScreen)" 
+                href="#t80384615.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 6px;" 
+                title="Check Forgot email button on login screen (in LoginScreen) retry #1" 
+                href="#t80384615.1"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 6px;" 
+                title="Check Forgot email button on login screen (in LoginScreen) retry #2" 
+                href="#t80384615.2"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 9px;" 
+                title="Check Learn more link on login screen (in LoginScreen)" 
+                href="#t1650346271.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 6px;" 
+                title="Check Create account link on login screen (in LoginScreen)" 
+                href="#t1355724475.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 11px;" 
+                title="Check Create account link on login screen (in LoginScreen) retry #1" 
+                href="#t1355724475.1"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 5px;" 
+                title="Check Create account link on login screen (in LoginScreen) retry #2" 
+                href="#t1355724475.2"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 9px;" 
+                title="Enter email or phone and click on next button (in LoginScreen)" 
+                href="#t606173796.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 8px;" 
+                title="Invalid email or phone (in LoginScreen)" 
+                href="#t333562188.0"
+        >&nbsp;</a>
+    </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="horizontal-scale">
+                        <td>&nbsp;</td>
+                            <td class="scale-10-label" style="width: 69px;min-width: 69px;">0s</td>
+                        <td class="scale-10-label">76s</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        
+    <h2>Test Result View</h2>
+    <div id="testview" class="viewbox">
+        <div id="bar-control">
+            <div id="bar-control-sort">
+                <label>sort by:</label>
+                <span class="option"><input type="radio" name="barSortOrder" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="acttime" />Act Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="order" />Execution</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="rescode" checked="checked" />Result</span>
+                <span class="option"><input type="checkbox" name="barSortDesc" id="barSortDesc" checked="checked" />desc</span>
+            </div>
+            <div id="bar-control-heights">
+                <label>heights:</label>
+                <span class="option"><input type="radio" checked="checked" name="barHeight" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barHeight" value="acttime" />Act Time</span>
+            </div>
+        </div>
+        <table class="vertical-scale" cellpadding="0" cellspacing="0">
+            <tr class="scale-max">
+                <td class="left-padding scale-max-label">&nbsp;</td>
+                <td colspan="12">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-mid">
+                <td class="left-padding scale-mid-label">&nbsp;</td>
+                <td colspan="12">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-min">
+                <td class="left-padding scale-min-label">&nbsp;</td>
+                <td colspan="12">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+        </table>
+        <div class="scrollable">
+            <table class="testview-items" cellpadding="0" cellspacing="0">
+                <tr class="testview-items-row">
+                    <td class="left-padding">&nbsp;</td>
+    <td class="testview-item" 
+        data-sr-exectime="7.8857118" data-sr-rescode="110" data-sr-order="0" data-sr-acttime="0.007">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 37px;"
+            title="Check google account login url (in LoginScreen)"
+            href="#t-393869772.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="11.0196802" data-sr-rescode="110" data-sr-order="4" data-sr-acttime="3.337">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 51px;"
+            title="Check Learn more link on login screen (in LoginScreen)"
+            href="#t1650346271.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="12.9058934" data-sr-rescode="110" data-sr-order="6" data-sr-acttime="4.531">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 60px;"
+            title="Check Create account link on login screen (in LoginScreen) retry #1"
+            href="#t1355724475.1">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="10.6036973" data-sr-rescode="110" data-sr-order="8" data-sr-acttime="2.804">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 49px;"
+            title="Enter email or phone and click on next button (in LoginScreen)"
+            href="#t606173796.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="5.71E-05" data-sr-rescode="420" data-sr-order="10" data-sr-acttime="0.0">
+        <a
+            class="bar colorSkipped" 
+            style="height: 2px;"
+            title="Null value in email or phone (in LoginScreen)"
+            href="#t-1810759480.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="1.01E-05" data-sr-rescode="420" data-sr-order="11" data-sr-acttime="0.0">
+        <a
+            class="bar colorSkipped" 
+            style="height: 2px;"
+            title="Non-Existing google account (in LoginScreen)"
+            href="#t-1611644957.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="7.7871849" data-sr-rescode="540" data-sr-order="1" data-sr-acttime="0.339">
+        <a
+            class="bar colorFailed" 
+            style="height: 36px;"
+            title="Check Forgot email button on login screen (in LoginScreen)"
+            href="#t80384615.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="7.6228777" data-sr-rescode="540" data-sr-order="2" data-sr-acttime="0.172">
+        <a
+            class="bar colorFailed" 
+            style="height: 35px;"
+            title="Check Forgot email button on login screen (in LoginScreen) retry #1"
+            href="#t80384615.1">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="7.6956086" data-sr-rescode="540" data-sr-order="3" data-sr-acttime="0.33">
+        <a
+            class="bar colorFailed" 
+            style="height: 36px;"
+            title="Check Forgot email button on login screen (in LoginScreen) retry #2"
+            href="#t80384615.2">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="7.5131883" data-sr-rescode="540" data-sr-order="5" data-sr-acttime="0.372">
+        <a
+            class="bar colorFailed" 
+            style="height: 35px;"
+            title="Check Create account link on login screen (in LoginScreen)"
+            href="#t1355724475.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="7.216463" data-sr-rescode="540" data-sr-order="7" data-sr-acttime="0.241">
+        <a
+            class="bar colorFailed" 
+            style="height: 34px;"
+            title="Check Create account link on login screen (in LoginScreen) retry #2"
+            href="#t1355724475.2">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="9.7648017" data-sr-rescode="540" data-sr-order="9" data-sr-acttime="2.812">
+        <a
+            class="bar colorFailed" 
+            style="height: 45px;"
+            title="Invalid email or phone (in LoginScreen)"
+            href="#t333562188.0">&nbsp;</a>
+    </td>
+                    <td class="right-padding">&nbsp;</td>
+                </tr>
+                <tr class="horizontal-scale">
+                    <td class="left-padding">&nbsp;</td>
+                    <td colspan="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+        
+        
+    <h2>Feature Summary</h2>
+    <table class="testEvents">
+            <tr>
+            <th>Feature</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+
+            <tr>
+                <td><a href="#f462542770">LoginScreen</a></td>
+                    <td>
+            40%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 99px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 149px;" 
+           title="2 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+    <td>
+        <a class="bar colorSkipped" 
+           style="width: 49px;" 
+           title="2 skipped" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>8 (test executions: 12)</td>
+    <td>4</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+        <td>00:01:30.0151741</td>
+
+            </tr>
+    </table>
+
+
+        <a name="error_summary" />
+        <h2>Error Summary</h2>
+        <table class="testEvents">
+                <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+    </tr>
+
+                <tr>
+                    <td>
+                        <a href="#t80384615.0">Check Forgot email button on login screen (in GoogleLoginScreen, LoginScreen)</a>
+                            <a href="#t80384615.1">retry #1</a>
+                            <a href="#t80384615.2">retry #2</a>
+                    </td>
+                        <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 599px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+                </tr>
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><div class="errorMessage">Error:   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+, retry #1: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+, retry #2: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+  3)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+</div></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#t1355724475.0">Check Create account link on login screen (in GoogleLoginScreen, LoginScreen)</a>
+                            <a href="#t1355724475.1">retry #1</a>
+                            <a href="#t1355724475.2">retry #2</a>
+                    </td>
+                        <td>
+            33%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="0 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 399px;" 
+           title="0 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+                </tr>
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><div class="errorMessage">Error: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</div></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#t333562188.0">Invalid email or phone (in GoogleLoginScreen, LoginScreen)</a>
+                    </td>
+                        <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 199px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+                </tr>
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><div class="errorMessage">Error: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class=&#39;o6cuMc&#39;]&quot;}
+  (Session info: chrome=84.0.4147.125)</div></td>
+                </tr>
+        </table>
+
+        <h2>Scenario Summary</h2>
+            <a name="f462542770" />
+            <h3>Feature: LoginScreen</h3>
+                <div class="description"><pre>	In order to manage google login screen
+	As a user
+	I want to verify that google login screen is as expected</pre>
+                </div>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t-393869772.0">Scenario: Check google account login url</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:07.8857118</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t80384615.0">Scenario: Check Forgot email button on login screen</a>
+            <a href="#t80384615.1">retry #1</a>
+            <a href="#t80384615.2">retry #2</a>
+
+                        </td>
+                        
+                            <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 599px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:23.1056712</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1650346271.0">Scenario: Check Learn more link on login screen</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:11.0196802</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1355724475.0">Scenario: Check Create account link on login screen</a>
+            <a href="#t1355724475.1">retry #1</a>
+            <a href="#t1355724475.2">retry #2</a>
+
+                        </td>
+                        
+                            <td>
+            33%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="0 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 399px;" 
+           title="0 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:27.6355447</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t606173796.0">Scenario: Enter email or phone and click on next button</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:10.6036973</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t333562188.0">Scenario: Invalid email or phone</a>
+
+                        </td>
+                        
+                            <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 199px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:09.7648017</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1810759480.0">Scenario: Null value in email or phone</a>
+
+                        </td>
+                        
+                            <td>
+            n/a
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSkipped" 
+           style="width: 199px;" 
+           title="1 skipped" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+        <td>00:00:00.0000571</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1611644957.0">Scenario: Non-Existing google account</a>
+
+                        </td>
+                        
+                            <td>
+            n/a
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSkipped" 
+           style="width: 199px;" 
+           title="1 skipped" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+        <td>00:00:00.0000101</td>
+
+                        
+                    </tr>
+            </table>
+
+        <h2>Execution Details</h2>
+            <a name="t-393869772.0" />
+            <h3>Scenario: Check google account login url (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: Automation, PageLoad
+                </div>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 16-08-2020 13:21:35</li>
+                <li>Execution time (sec): 7.8857118</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check google account login url] -->
+                            <pre class="log">Open browser
+done: LoginScreenSteps.GivenUserOpensBrowser() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 7.257s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User has entered google account url in the browser</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check google account login url] -->
+                            <pre class="log">Enter url
+done: LoginScreenSteps.WhenUserHasEnteredGoogleAccountUrlInTheBrowser() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.007s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Login page should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check google account login url] -->
+                            <pre class="log">Login page displayed
+Sign In Header is correct
+done: LoginScreenSteps.ThenLoginPageShouldBeDisplayed() (0.3s)</pre>
+                        </td>
+                        <td>Succeeded in 0.337s</td>
+                    </tr>
+            </table>
+            <a name="t80384615.0" />
+            <h3>Scenario: Check Forgot email button on login screen (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: Automation, ForgortButton
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:21:43</li>
+                <li>Execution time (sec): 7.7871849</li>
+                <li>Thread: #0</li>
+                <li>Error:   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.965s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on forget email button</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.3s)</pre>
+                        </td>
+                        <td>Succeeded in 0.339s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Forgot email screen should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Sign in
+error:   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^</pre>
+                                <div class="errorMessage">  Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+</div>
+                                <pre class="stackTrace">NUnit.Framework.AssertionException:   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+   at NUnit.Framework.Assert.ReportFailure(String message) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 395
+   at NUnit.Framework.Assert.ReportFailure(ConstraintResult result, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 383
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 241
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 222
+   at GoogleLoginScreen.Pages.LoginScreen.VerifyForgotBtn() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 54
+   at GoogleLoginScreen.Steps.LoginScreenSteps.ThenForgotEmailScreenShouldBeDisplayed() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 62
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.CheckForgotEmailButtonOnLoginScreen() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 16
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.338s</td>
+                    </tr>
+            </table>
+            <a name="t80384615.1" />
+            <h3>Scenario: Check Forgot email button on login screen (in GoogleLoginScreen, LoginScreen) retry #1</h3>
+                <div class="description">
+                    tags: Automation, ForgortButton
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:21:51</li>
+                <li>Execution time (sec): 7.6228777</li>
+                <li>Thread: #0</li>
+                <li>Error: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 7.145s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on forget email button</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.2s)</pre>
+                        </td>
+                        <td>Succeeded in 0.172s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Forgot email screen should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Sign in
+error: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^</pre>
+                                <div class="errorMessage">Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+</div>
+                                <pre class="stackTrace">NUnit.Framework.AssertionException: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+
+   at NUnit.Framework.Assert.ReportFailure(String message) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 395
+   at NUnit.Framework.Assert.ReportFailure(ConstraintResult result, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 383
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 241
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 222
+   at GoogleLoginScreen.Pages.LoginScreen.VerifyForgotBtn() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 54
+   at GoogleLoginScreen.Steps.LoginScreenSteps.ThenForgotEmailScreenShouldBeDisplayed() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 62
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.CheckForgotEmailButtonOnLoginScreen() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 16
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.157s</td>
+                    </tr>
+            </table>
+            <a name="t80384615.2" />
+            <h3>Scenario: Check Forgot email button on login screen (in GoogleLoginScreen, LoginScreen) retry #2</h3>
+                <div class="description">
+                    tags: Automation, ForgortButton
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:21:58</li>
+                <li>Execution time (sec): 7.6956086</li>
+                <li>Thread: #0</li>
+                <li>Error: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+  3)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 7.027s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on forget email button</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnForgetEmailButton() (0.3s)</pre>
+                        </td>
+                        <td>Succeeded in 0.33s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Forgot email screen should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Forgot email button on login screen] -->
+                            <pre class="log">Sign in
+error: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+  3)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^</pre>
+                                <div class="errorMessage">Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+  3)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+</div>
+                                <pre class="stackTrace">NUnit.Framework.AssertionException: Multiple failures or warnings in test:
+  1)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+  2)   Expected string length 15 but was 7. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &quot;Sign in&quot;
+  -----------^
+
+  3)   Expected string length 15 but was 0. Strings differ at index 0.
+  Expected: &quot;Find your email&quot;
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+
+   at NUnit.Framework.Assert.ReportFailure(String message) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 395
+   at NUnit.Framework.Assert.ReportFailure(ConstraintResult result, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.cs:line 383
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression, String message, Object[] args) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 241
+   at NUnit.Framework.Assert.That[TActual](TActual actual, IResolveConstraint expression) in D:\a\1\s\src\NUnitFramework\framework\Assert.That.cs:line 222
+   at GoogleLoginScreen.Pages.LoginScreen.VerifyForgotBtn() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 54
+   at GoogleLoginScreen.Steps.LoginScreenSteps.ThenForgotEmailScreenShouldBeDisplayed() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 62
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.CheckForgotEmailButtonOnLoginScreen() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 16
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.191s</td>
+                    </tr>
+            </table>
+            <a name="t1650346271.0" />
+            <h3>Scenario: Check Learn more link on login screen (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: Automation, LearnMoreLink
+                </div>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 16-08-2020 13:22:06</li>
+                <li>Execution time (sec): 11.0196802</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Learn more link on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.881s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on Learn more link</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Learn more link on login screen] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnLearnMoreLink() (3.3s)</pre>
+                        </td>
+                        <td>Succeeded in 3.337s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Learn more page should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Learn more link on login screen] -->
+                            <pre class="log">Browse Chrome as a guest
+done: LoginScreenSteps.ThenLearnMorePageShouldBeDisplayed() (0.6s)</pre>
+                        </td>
+                        <td>Succeeded in 0.649s</td>
+                    </tr>
+            </table>
+            <a name="t1355724475.0" />
+            <h3>Scenario: Check Create account link on login screen (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: Automation, CreateAccount
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:22:17</li>
+                <li>Execution time (sec): 7.5131883</li>
+                <li>Thread: #0</li>
+                <li>Error: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.988s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on Create accoun link and selete given options</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">error: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</pre>
+                                <div class="errorMessage">stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</div>
+                                <pre class="stackTrace">OpenQA.Selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at GoogleLoginScreen.Pages.LoginScreen.ClickOnCreateAccount() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 70
+   at GoogleLoginScreen.Steps.LoginScreenSteps.WhenUserClickOnCreateAccounLinkAndSeleteGivenOptions() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 80
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.CheckCreateAccountLinkOnLoginScreen() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 28
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.372s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Create account page should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">skipped because of previous errors</pre>
+                        </td>
+                        <td>Skipped in 0.015s</td>
+                    </tr>
+            </table>
+            <a name="t1355724475.1" />
+            <h3>Scenario: Check Create account link on login screen (in GoogleLoginScreen, LoginScreen) retry #1</h3>
+                <div class="description">
+                    tags: Automation, CreateAccount
+                </div>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 16-08-2020 13:22:25</li>
+                <li>Execution time (sec): 12.9058934</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.908s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on Create accoun link and selete given options</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">Create account for myself
+done: LoginScreenSteps.WhenUserClickOnCreateAccounLinkAndSeleteGivenOptions() (4.5s)</pre>
+                        </td>
+                        <td>Succeeded in 4.531s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Create account page should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">Create your Google Account
+done: LoginScreenSteps.ThenCreateAccountPageShouldBeDisplayed() (0.6s)</pre>
+                        </td>
+                        <td>Succeeded in 0.591s</td>
+                    </tr>
+            </table>
+            <a name="t1355724475.2" />
+            <h3>Scenario: Check Create account link on login screen (in GoogleLoginScreen, LoginScreen) retry #2</h3>
+                <div class="description">
+                    tags: Automation, CreateAccount
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:22:38</li>
+                <li>Execution time (sec): 7.216463</li>
+                <li>Thread: #0</li>
+                <li>Error: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.615s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User click on Create accoun link and selete given options</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">error: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</pre>
+                                <div class="errorMessage">stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)</div>
+                                <pre class="stackTrace">OpenQA.Selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+  (Session info: chrome=84.0.4147.125)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.InternalExecute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Execute(String commandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebElement.Click()
+   at GoogleLoginScreen.Pages.LoginScreen.ClickOnCreateAccount() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 70
+   at GoogleLoginScreen.Steps.LoginScreenSteps.WhenUserClickOnCreateAccounLinkAndSeleteGivenOptions() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 80
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.CheckCreateAccountLinkOnLoginScreen() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 28
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.241s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Create account page should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Check Create account link on login screen] -->
+                            <pre class="log">skipped because of previous errors</pre>
+                        </td>
+                        <td>Skipped in 0.005s</td>
+                    </tr>
+            </table>
+            <a name="t606173796.0" />
+            <h3>Scenario: Enter email or phone and click on next button (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: automation, vaildTest
+                </div>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 16-08-2020 13:22:45</li>
+                <li>Execution time (sec): 10.6036973</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Enter email or phone and click on next button] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 7.061s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User enter valid email or phone</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Enter email or phone and click on next button] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserEnterValidEmailOrPhone() (0.4s)</pre>
+                        </td>
+                        <td>Succeeded in 0.402s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">And User click on the next button</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Enter email or phone and click on next button] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.4s)</pre>
+                        </td>
+                        <td>Succeeded in 2.402s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Page to enter password should be displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Enter email or phone and click on next button] -->
+                            <pre class="log">Couldn't sign you in
+done: LoginScreenSteps.ThenPageToEnterPasswordShouldBeDisplayed() (0.6s)</pre>
+                        </td>
+                        <td>Succeeded in 0.571s</td>
+                    </tr>
+            </table>
+            <a name="t333562188.0" />
+            <h3>Scenario: Invalid email or phone (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: automation, invaildTest
+                </div>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 16-08-2020 13:22:55</li>
+                <li>Execution time (sec): 9.7648017</li>
+                <li>Thread: #0</li>
+                <li>Error: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class=&#39;o6cuMc&#39;]&quot;}
+  (Session info: chrome=84.0.4147.125)</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given User opens browser and enter url</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Invalid email or phone] -->
+                            <pre class="log">Open browser and enter url
+done: LoginScreenSteps.GivenUserOpensBrowserAndEnterUrl() (0.0s)</pre>
+                        </td>
+                        <td>Succeeded in 6.764s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When User enter invalid email or phone</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Invalid email or phone] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserEnterInvalidEmailOrPhone() (0.4s)</pre>
+                        </td>
+                        <td>Succeeded in 0.426s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">And User click on the next button</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Invalid email or phone] -->
+                            <pre class="log">done: LoginScreenSteps.WhenUserClickOnTheNextButton() (2.4s)</pre>
+                        </td>
+                        <td>Succeeded in 2.386s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then Enter valid email or phone message is displayed</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Invalid email or phone] -->
+                            <pre class="log">error: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class='o6cuMc']&quot;}
+  (Session info: chrome=84.0.4147.125)</pre>
+                                <div class="errorMessage">no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class='o6cuMc']&quot;}
+  (Session info: chrome=84.0.4147.125)</div>
+                                <pre class="stackTrace">OpenQA.Selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class='o6cuMc']&quot;}
+  (Session info: chrome=84.0.4147.125)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElementByXPath(String xpath)
+   at OpenQA.Selenium.By.&lt;&gt;c__DisplayClass19_0.&lt;XPath&gt;b__0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(By by)
+   at GoogleLoginScreen.Pages.LoginScreen.VerifyInValidErrorMsg() in A:\InfoTrack\GoogleLoginScreen\Pages\LoginScreen.cs:line 120
+   at GoogleLoginScreen.Steps.LoginScreenSteps.ThenEnterValidEmailOrPhoneMessageIsDisplayed() in A:\InfoTrack\GoogleLoginScreen\Steps\LoginScreenSteps.cs:line 116
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 75
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 501
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 422
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 256
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at GoogleLoginScreen.Features.LoginScreenFeature.ScenarioCleanup()
+   at GoogleLoginScreen.Features.LoginScreenFeature.InvalidEmailOrPhone() in A:\InfoTrack\GoogleLoginScreen\Features\LoginScreen.feature:line 42
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.041s</td>
+                    </tr>
+            </table>
+            <a name="t-1810759480.0" />
+            <h3>Scenario: Null value in email or phone (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: automation, NullValueTest
+                </div>
+            <ul>
+                <li>Status: Skipped</li>
+                <li>Start time: 16-08-2020 13:23:05</li>
+                <li>Execution time (sec): 5.71E-05</li>
+                <li>Thread: #-1</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+            <a name="t-1611644957.0" />
+            <h3>Scenario: Non-Existing google account (in GoogleLoginScreen, LoginScreen)</h3>
+                <div class="description">
+                    tags: automation, Non-Existing
+                </div>
+            <ul>
+                <li>Status: Skipped</li>
+                <li>Start time: 16-08-2020 13:23:05</li>
+                <li>Execution time (sec): 1.01E-05</li>
+                <li>Thread: #-1</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+	</body>
+</html>
